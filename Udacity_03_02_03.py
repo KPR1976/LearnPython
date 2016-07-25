@@ -1,55 +1,24 @@
-def symmetric(p):
+def list_mean(p):
     n = len(p)
     i = 0
+    r = 0.0
 # check if empty
     if p == []:
-        return True
-# check if row_count = col_count
-    if n != len(p[0]):
-        return False
+        print "Error, your list is empty"
 # check if symmetric
     while i < n:
-        j = 0
-        while j < n:
-            if p[i][j] != p[j][i]:
-                return False
-            j += 1
+        r += p[i]
         i += 1
-    return True
+    return float(r / n)
 
 
-
-
-print symmetric([[1, 2, 3],
-                 [2, 3, 4],
-                 [3, 4, 1]])
-#>>> True
-
-print symmetric([["cat", "dog", "fish"],
-                ["dog", "dog", "fish"],
-                ["fish", "fish", "cat"]])
-#>>> True
-
-#print symmetric([["cat", "dog", "fish"],
-#                ["dog", "dog", "dog"],
-#                ["fish","fish","cat"]])
-#>>> False
-
-print symmetric([[1, 2],
-                [2, 1]])
-#>>> True
-
-print symmetric([[1, 2, 3, 4],
-                [2, 3, 4, 5],
-                [3, 4, 5, 6]])
-#>>> False
-
-print symmetric([])
-#>>> False
-
-print symmetric([[1,2,3],
-                [2,3,1]])
-#>>> False
-
-print symmetric([[1,2,3]])
-#>>> False
+print list_mean([1,2,3,4])
+#>>> 2.5
+print list_mean([1,3,4,5,2])
+#>>> 3.0
+#print list_mean([])
+#>>> ??? You decide. If you decide it should give an error, comment
+# out the print line above to prevent your code from being graded as
+# incorrect.
+print list_mean([2])
+#>>> 2.0
