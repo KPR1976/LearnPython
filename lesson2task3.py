@@ -6,6 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 @pytest.fixture
 def driver(request):
     wd = webdriver.Chrome('/Users/KPR/Mystuff/SeleniumDrivers/chromedriver')
+    #wd = webdriver.Safari()
+    #wd = webdriver.Firefox(executable_path='/Users/KPR/Mystuff/SeleniumDrivers/geckodriver')
     request.addfinalizer(wd.quit)
     return wd
 
