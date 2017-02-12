@@ -1,5 +1,6 @@
 import pytest
 from selenium import webdriver
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
@@ -12,5 +13,6 @@ def driver(request):
 def test_example(driver):
     driver.get("http://www.google.com/ncr")
     driver.find_element_by_name("q").send_keys("webdriver")
-    driver.find_element_by_name("btnG").click()
-    WebDriverWait(driver, 10).until(EC.title_is("webdriver - Google Search"))
+    btnG = driver.find_element_by_name("btnG")
+    btnG.click()
+    WebDriverWait(driver, 30).until(EC.title_is("webdriver - Google Search"))

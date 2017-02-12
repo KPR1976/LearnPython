@@ -6,11 +6,8 @@ from selenium.webdriver.support import expected_conditions as EC
 
 @pytest.fixture
 def driver(request):
-    #caps = DesiredCapabilities.FIREFOX
     wd = webdriver.Firefox(executable_path='/Users/KPR/Mystuff/SeleniumDrivers/geckodriver')
-    print (wd.capabilities)
     request.addfinalizer(wd.quit)
-
     return wd
 
 def test_example(driver):
