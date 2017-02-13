@@ -34,7 +34,7 @@ def test(wd):
         if countrywithzone.text != "0":
             countrieswithzones.append(country.text)
 
-    # assert on alphabet order of countries
+    # assert on "проверить, что страны расположены в алфавитном порядке"
     countriessorted = sorted(countries)
     assert countries == countriessorted
     print "Test A done"
@@ -47,7 +47,7 @@ def test(wd):
         for element in elements:
             if element.get_attribute("textContent") != "":
                 zones.append(element.get_attribute("textContent"))
-        # assert on alphabet order of timezones
+        # assert on "для тех стран, у которых количество зон отлично от нуля -- открыть страницу этой страны и там проверить, что зоны расположены в алфавитном порядке"
         zonessorted = sorted(zones)
         assert zones == zonessorted
         wd.get("http://localhost/litecart/admin/?app=countries&doc=countries")
