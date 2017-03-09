@@ -16,4 +16,3 @@ def test(driver):
     driver.find_element_by_name("uid").send_keys("mngr68231")
     driver.find_element_by_name("password").send_keys("bebAsar")
     driver.find_element_by_name("btnLogin").click()
-    WebDriverWait(driver, 10).until(EC.title_is("Guru99 Bank Manager HomePage"))
