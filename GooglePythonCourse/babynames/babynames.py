@@ -27,11 +27,13 @@ Here's what the html looks like in the baby.html files:
 ...
 
 Suggested milestones for incremental development:
- -Extract the year and print it
+ -Extract all the text from the file and print it
+ -Find and extract the year and print it
  -Extract the names and rank numbers and just print them
  -Get the names data into a dict and print it
  -Build the [year, 'name rank', ... ] list and print it
  -Fix main() to use the extract_names list
+
 """
 
 def extract_names(filename):
@@ -41,10 +43,9 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  f = open (filename, 'r')
-  filetext = f.read()
-  match = re.search(r'<h3\s\S+', filetext)
-  return match.group()
+  file = open(filename, mode='r')
+  print(file.readlines())
+  return
 
 
 def main():
@@ -54,7 +55,7 @@ def main():
   args = sys.argv[1:]
 
   if not args:
-    print 'usage: [--summaryfile] file [file ...]'
+    print('usage: [--summaryfile] file [file ...]')
     sys.exit(1)
 
   # Notice the summary flag and remove it from args if it is present.
@@ -66,8 +67,7 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  for filename in args:
-    print extract_names(filename)
+  extract_names(args[0])
 
 if __name__ == '__main__':
   main()
