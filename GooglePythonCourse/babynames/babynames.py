@@ -31,7 +31,7 @@ Suggested milestones for incremental development:
  -DONE Find and extract the year and print it
  -DONE Extract the names and rank numbers and just print them
  -DONE Get the names data into a dict and print it
- -Build the [year, 'name rank', ... ] list and print it
+ -DONE Build the [year, 'name rank', ... ] list and print it
  -Fix main() to use the extract_names list
 """
 
@@ -63,8 +63,9 @@ def extract_names(filename):
       number = value
       tolist = key + ' ' + value
       finallist.append(tolist)
-  print(finallist)
-  return
+  finallist.sort()
+  return(finallist)
+  #return
 
 
 def main():
@@ -86,7 +87,10 @@ def main():
   # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
-  extract_names(args[0])
+  if summary == True:
+      print('under construction')
+  else:
+      print(extract_names(args[0]))
 
 if __name__ == '__main__':
   main()
