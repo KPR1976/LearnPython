@@ -27,8 +27,8 @@ Here's what the html looks like in the baby.html files:
 ...
 
 Suggested milestones for incremental development:
- -Extract all the text from the file and print it
- -Find and extract the year and print it
+ -DONE Extract all the text from the file and print it
+ -DONE Find and extract the year and print it
  -Extract the names and rank numbers and just print them
  -Get the names data into a dict and print it
  -Build the [year, 'name rank', ... ] list and print it
@@ -44,7 +44,12 @@ def extract_names(filename):
   """
   # +++your code here+++
   file = open(filename, mode='r')
-  print(file.readlines())
+  text = file.read() # read text of file
+  match = re.search('(Popularity in) (\d\d\d\d)', text)
+  print(match.group(2))
+
+
+  #print(text)
   return
 
 
