@@ -29,11 +29,10 @@ Here's what the html looks like in the baby.html files:
 Suggested milestones for incremental development:
  -DONE Extract all the text from the file and print it
  -DONE Find and extract the year and print it
- -Extract the names and rank numbers and just print them
- -Get the names data into a dict and print it
+ -DONE Extract the names and rank numbers and just print them
+ -DONE Get the names data into a dict and print it
  -Build the [year, 'name rank', ... ] list and print it
  -Fix main() to use the extract_names list
-
 """
 
 def extract_names(filename):
@@ -42,19 +41,22 @@ def extract_names(filename):
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
-  # +++your code here+++
   file = open(filename, mode='r')
   text = file.read() # read text of file
-  #print(text)
+  #Find and extract the year and print it
   matchyear = re.search('(Popularity in) (\d\d\d\d)', text)
   print(matchyear.group(2))
+  #Extract the names and rank numbers and just print them
+  #Get the names data into a dict and print it
   matchname = re.findall('(<tr align="right"><td>)(\d+)(</td><td>)(\w+)(</td><td>)(\w+)', text)
   #print(matchname)
+  namedict = {}
   for match in matchname:
-      print(match[1])
-      print(match[3])
-      print(match[5])
-  #print(text)
+      print(match[1] + ' ' + match[3] + ' ' + match[5])
+      namedict[match[3]] = match[1]
+      namedict[match[5]] = match[1]
+  print(namedict)
+
   return
 
 
