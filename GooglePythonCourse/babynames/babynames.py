@@ -45,7 +45,7 @@ def extract_names(filename):
   text = file.read() # read text of file
   #Find and extract the year and print it
   matchyear = re.search('(Popularity in) (\d\d\d\d)', text)
-  print(matchyear.group(2))
+  #print(matchyear.group(2))
   #Extract the names and rank numbers and just print them
   #Get the names data into a dict and print it
   matchname = re.findall('(<tr align="right"><td>)(\d+)(</td><td>)(\w+)(</td><td>)(\w+)', text)
@@ -56,7 +56,14 @@ def extract_names(filename):
       namedict[match[3]] = match[1]
       namedict[match[5]] = match[1]
   print(namedict)
-
+  #Build the [year, 'name rank', ... ] list and print it
+  finallist = [matchyear.group(2)]
+  for key, value in namedict.items():
+      name = key
+      number = value
+      tolist = key + ' ' + value
+      finallist.append(tolist)
+  print(finallist)
   return
 
 
