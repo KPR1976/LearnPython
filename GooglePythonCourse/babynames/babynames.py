@@ -45,10 +45,15 @@ def extract_names(filename):
   # +++your code here+++
   file = open(filename, mode='r')
   text = file.read() # read text of file
-  match = re.search('(Popularity in) (\d\d\d\d)', text)
-  print(match.group(2))
-
-
+  #print(text)
+  matchyear = re.search('(Popularity in) (\d\d\d\d)', text)
+  print(matchyear.group(2))
+  matchname = re.findall('(<tr align="right"><td>)(\d+)(</td><td>)(\w+)(</td><td>)(\w+)', text)
+  #print(matchname)
+  for match in matchname:
+      print(match[1])
+      print(match[3])
+      print(match[5])
   #print(text)
   return
 
