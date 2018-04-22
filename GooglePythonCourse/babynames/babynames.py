@@ -52,10 +52,10 @@ def extract_names(filename):
   #print(matchname)
   namedict = {}
   for match in matchname:
-      print(match[1] + ' ' + match[3] + ' ' + match[5])
+      #print(match[1] + ' ' + match[3] + ' ' + match[5])
       namedict[match[3]] = match[1]
       namedict[match[5]] = match[1]
-  print(namedict)
+  #print(namedict)
   #Build the [year, 'name rank', ... ] list and print it
   finallist = [matchyear.group(2)]
   for key, value in namedict.items():
