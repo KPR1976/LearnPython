@@ -32,7 +32,7 @@ Suggested milestones for incremental development:
  -DONE Extract the names and rank numbers and just print them
  -DONE Get the names data into a dict and print it
  -DONE Build the [year, 'name rank', ... ] list and print it
- -Fix main() to use the extract_names list
+ -DONE Fix main() to use the extract_names list
 """
 
 def extract_names(filename):
@@ -42,20 +42,16 @@ def extract_names(filename):
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   file = open(filename, mode='r')
-  text = file.read() # read text of file
+  text = file.read()
   #Find and extract the year and print it
   matchyear = re.search('(Popularity in) (\d\d\d\d)', text)
-  #print(matchyear.group(2))
   #Extract the names and rank numbers and just print them
   #Get the names data into a dict and print it
   matchname = re.findall('(<tr align="right"><td>)(\d+)(</td><td>)(\w+)(</td><td>)(\w+)', text)
-  #print(matchname)
   namedict = {}
   for match in matchname:
-      #print(match[1] + ' ' + match[3] + ' ' + match[5])
       namedict[match[3]] = match[1]
       namedict[match[5]] = match[1]
-  #print(namedict)
   #Build the [year, 'name rank', ... ] list and print it
   finallist = [matchyear.group(2)]
   for key, value in namedict.items():
@@ -65,8 +61,6 @@ def extract_names(filename):
       finallist.append(tolist)
   finallist.sort()
   return(finallist)
-  #return
-
 
 def main():
   # This command-line parsing code is provided.
@@ -84,11 +78,14 @@ def main():
     summary = True
     del args[0]
 
-  # +++your code here+++
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
   if summary == True:
-      print('under construction')
+      data = extract_names(args[0])
+      with open('summary.txt', 'w') as f:
+        for item in data:
+            f.write("%s\n" % item)
+        f.close()
   else:
       print(extract_names(args[0]))
 
