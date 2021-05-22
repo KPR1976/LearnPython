@@ -82,7 +82,8 @@ def main():
   # or write it to a summary file
   if summary == True:
       data = extract_names(args[0])
-      with open('summary.txt', 'w') as f:
+      filename=args[0].split('.html')[0]
+      with open(filename + '.summary', 'w') as f:
         for item in data:
             f.write("%s\n" % item)
         f.close()
