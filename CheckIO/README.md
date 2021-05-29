@@ -1,0 +1,1 @@
+https://py.checkio.org/ exercises
